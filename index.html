@@ -64,6 +64,11 @@
             <i><img src="Resources/italic-xxl.png" width="10" height="10" ></i>
           </button>
 
+          <label for="font-color-picker" class="color-picker-label" >
+            <input type="color" class="color-picker" id="font-color-picker" onchange="changeFontColor(this.value)">
+            <img src="Resources/color-pick.png" width="18" height="13">
+          </label>
+
           <button type="button" class="custom-button" onclick="alignText('left')">
             <img src="Resources/left.png" width="10" height="10" >
           </button>
@@ -115,6 +120,11 @@
         function cmd(command, value = null) {
         document.execCommand(command, false, value);
         saveState();
+    }
+
+    function changeFontColor(selectedColor) {
+    document.execCommand('foreColor', false, selectedColor);
+    saveState(); 
     }
 
      //this function for alignments
