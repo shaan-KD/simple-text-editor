@@ -5,25 +5,36 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Text Editor - [CT/2019/098]</title>
+    <title>Simple Text Editor - [CT/2019/098]</title>
+
+
     <!-- Internal CSS -->
     
     <style>
+
+        h1 {text-align: center;
+          background-color: #f0f0f0; 
+          font-family: 'Arial', sans-serif; 
+          color: #3498db; 
+          margin: 50px;
+          padding: 2px;
+        }
+
         #editor {
-          border: 1px solid #ccc;
-          min-height: 200px;
+          border: 2px solid #719cbec5;
+          min-height: 400px;
           padding: 10px;
           overflow:auto;
         }
     
         #backgroundcolor{
-            background-color: black;
+            background-color: #474747;
         }
         .custom-button {
-            background-color: black;
+            background-color:  #474747;
             color: white;
             border: 20px;
-            padding: 7px 15px;
+            padding: 6px 15px;
             cursor: pointer;
         }
 
@@ -46,25 +57,25 @@
 </head>
 <body>
   <div>
-    <h1> Online Text Editing Application....!</h1>
+    <h1 > SIMPLE TEXT EDITOR</h1>
   </div>
-    <center>
-      <div id="backgroundcolor" class="custom-button">
+   
+      <center>
+      <div  id="backgroundcolor" class="custom-button">
 
         <button type="button" class="custom-button" onclick="cmd('bold')">
             <b><img src="Resources/bold-xxl.png" width="10" height="10" ></b>
           </button>
 
           <button type="button" class="custom-button" onclick="cmd('underline')">
-            <u><img src="Resources/format_underline_white_192x192.png" width="20" height="13" ></u>
+            <u><img src="Resources/format_underline_white_192x192.png" width="14" height="15" ></u>
           </button>
-
 
           <button type="button" class="custom-button" onclick="cmd('italic')">
             <i><img src="Resources/italic-xxl.png" width="10" height="10" ></i>
           </button>
 
-          <label for="font-color-picker" class="color-picker-label" >
+          <label for="font-color-picker" class="color-picker-label">
             <input type="color" class="color-picker" id="font-color-picker" onchange="changeFontColor(this.value)">
             <img src="Resources/color-pick.png" width="18" height="13">
           </label>
@@ -80,13 +91,10 @@
           <button type="button" class="custom-button" onclick="alignText('justify')">
             <img src="Resources/justify.png" width="10" height="10" >
           </button>
-  
-
 
           <button type="button" class="custom-button" onclick="alignText('center')">
             <img src="Resources/center.png" width="10" height="10" >
           </button>
-        
         
           <button type="button" class="custom-button" onclick="undo()">
             <img src="Resources/undo-4-32.png" width="10" height="10" >
@@ -96,26 +104,17 @@
             <img src="Resources/action-redo-32.png" width="10" height="10" >
           </button>
 
-
-
-
-
-  
+        </center>
 
       </div>
-    </center>
+   
 
   <div id="editor" contenteditable="true">
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-        The point of using Lorem Ipsum is that it has a more-of-less normal distribution of letters,as opposed to using 'Content here',
-        making it look like readable English.Many desktop publishing packages and web page editors now use Lorem Ipsum as their default 
-        module text,and a search for'lorem Ipsum' will uncover many web sites still in their infancy.Various version have evolved over the 
-        years,sometimes by accident,sometimes on purpose(injected humor and the like).
-
+      web development 
   </div>
     
 
-  <!-- Internal JS -->
+  <!-- Internal Java Script -->
 <script>
 
     const format = document.getElementById('editor');
@@ -126,10 +125,10 @@
 
     function changeFontColor(selectedColor) {
     document.execCommand('foreColor', false, selectedColor);
-    saveState(); 
+    saveState();
     }
 
-     //this function for alignments
+     //Alignments fucntions
      function alignText(align) {
     const validAlignments = ['left', 'center', 'right', 'justify'];
 
@@ -140,14 +139,14 @@
 
         saveState(); 
     } else {
-        console.error('Invalid alignment value provided.');
+        console.error('Invalid alignment value');
   }
 }
        
 
 
-  //this function for undo&redo
-  let undoStack = [];
+  //undo&redo functions
+    let undoStack = [];
     let redoStack = [];
 
     function saveState() {
