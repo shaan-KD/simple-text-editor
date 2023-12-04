@@ -63,6 +63,13 @@
           <button type="button" class="custom-button" onclick="cmd('italic')">
             <i><img src="Resources/italic-xxl.png" width="10" height="10" ></i>
           </button>
+
+          <button type="button" class="custom-button" onclick="alignText('left')">
+            <img src="Resources/left.png" width="10" height="10" >
+          </button>
+  
+
+
   
       </div>
     </center>
@@ -84,6 +91,21 @@
         document.execCommand(command, false, value);
         saveState();
     }
+
+     //this function for alignments
+     function alignText(align) {
+    const validAlignments = ['left', 'center', 'right', 'justify'];
+
+    if (validAlignments.includes(align)) {
+        const editor = document.getElementById('editor');
+
+        editor.style.textAlign = align;
+
+        saveState(); 
+    } else {
+        console.error('Invalid alignment value provided.');
+  }
+}
        
 
 </script>
