@@ -71,7 +71,26 @@
           <button type="button" class="custom-button" onclick="alignText('right')">
             <img src="Resources/right.png" width="10" height="10" >
           </button>
+
+          <button type="button" class="custom-button" onclick="alignText('justify')">
+            <img src="Resources/justify.png" width="10" height="10" >
+          </button>
   
+
+
+          <button type="button" class="custom-button" onclick="alignText('center')">
+            <img src="Resources/center.png" width="10" height="10" >
+          </button>
+        
+        
+          <button type="button" class="custom-button" onclick="undo()">
+            <img src="Resources/undo-4-32.png" width="10" height="10" >
+          </button>
+          
+          <button type="button" class="custom-button" onclick="redo()">
+            <img src="Resources/action-redo-32.png" width="10" height="10" >
+          </button>
+
 
 
   
@@ -112,8 +131,34 @@
 }
        
 
+
+  //this function for undo&redo
+  let undoStack = [];
+    let redoStack = [];
+
+    function saveState() {
+      const content = editor.innerHTML;
+      undoStack.push(content);
+    }
+
+    function undo() {
+      if (undoStack.length > 1) {
+        redoStack.push(undoStack.pop());
+        const content = undoStack[undoStack.length - 1];
+        editor.innerHTML = content;
+      }
+    }
+
+    function redo() {
+      if (redoStack.length > 0) {
+        const content = redoStack.pop();
+        editor.innerHTML = content;
+        undoStack.push(content);
+      }
+    }
+
+    
 </script>
 </body>
 <!-- Author: [Dhiroshan] | [CT/2019/098] -->
 </html>
-
